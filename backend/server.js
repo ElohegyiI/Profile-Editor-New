@@ -8,7 +8,7 @@ const path = require("path");
 
 const app = express();
 
-const dataLocation = path.join(`${__dirname}/../frontend/`);
+const dataLocation = path.join(`${__dirname}/../frontend/data/`);
 
 
 
@@ -85,7 +85,7 @@ app.post("/", (req, res) => {
             console.log(error);
         }
     });
-    res.send("Done");
+    res.send(answer);
 });
 
 const port = 9000;

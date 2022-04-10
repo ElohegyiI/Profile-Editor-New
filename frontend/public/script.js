@@ -1,6 +1,6 @@
 const formComponent = `
     <section>
-        <form id='form'>
+        <form action="" id='form'>
             <h1>Profile Editor</h1>
 
             <input type="text" name='firstname'     placeholder="Firstname"><br>
@@ -13,12 +13,12 @@ const formComponent = `
 
             <div class="area-image">
                 <textarea id="introduction" name="introduction"         placeholder="Introduction" 	maxlength="300" required></textarea><br>
-
-            <img src="" alt="profile image"></img>
+            <input type="file" class="imginput" name="picture">
+            <img src="" alt="" id="profile"></img>
         </div>
         <div class="button-class">
-            <button>Save</button>
-            <button>Delete</button>	
+            <button type='submit' id='button'>Save</button>
+            <button type='reset'>Delete</button>	
         </div>
         </form>
     </section>
@@ -48,10 +48,12 @@ formElement.addEventListener('submit', e => {
 
     formData.append('introduction', e.target.querySelector(`textarea[name='introduction']`).value);
 
-    formData.append('button-class', e.target.querySelector(`.button-class`).value)
+    /*formData.append('button-class', e.target.querySelector(`.button-class`).value)*/
 
+    formData.append("picture", e.target.querySelector(`input[name="picture"]`).files[0])
 
     const fetchSettings = {
+        
         method: 'POST',
         body: FormData
     }
@@ -64,9 +66,9 @@ formElement.addEventListener('submit', e => {
             if ( data.status === 200 ) {
                 const res = await data.json()
 
-            e.target.outerHTML = `<img src="upload/${res.pictureName}">`
+            /*e.target.outerHTML = `<img src="upload/${res.pictureName}">`
             
-            console.dir(data)
+            console.dir(data)*/
             }
         })
         .catch( error => {

@@ -34,7 +34,7 @@
   /* css reset */
 
   body {
-      background-color: #f2f2f2;
+    background-color: #f2f2f2;
   }
 
   section {
@@ -95,21 +95,21 @@
   }
 
   #form .area-image {
-      display: flex;
-      flex-direction: row;
-      gap: 25px;
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
   }
 
   #form .area-image img {
-      height: 120px;
-      width: 100px;
+    height: 120px;
+    width: 100px;
 
   }
 
   #form .button-class {
-      display: flex;
-      flex-direction: row;
-      gap: 40px;
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
   }
 
   #form button {
