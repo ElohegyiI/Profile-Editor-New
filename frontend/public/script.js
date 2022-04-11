@@ -1,24 +1,24 @@
 const formComponent = `
     <section>
-        <form action="" id='form'>
+        <form action="" id='form' method='POST'>
             <h1>Profile Editor</h1>
 
-            <input type="text" name='firstname'     placeholder="Firstname"><br>
+            <input type="text" name="firstname"    placeholder="Firstname"><br>
 
-            <input type="text" name='surname' placeholder="Surname"><br>
+            <input type="text" name="surname" placeholder="Surname"><br>
 
-            <input type="text" name='address' placeholder="Address"><br>
+            <input type="text" name="address" placeholder="Address"><br>
 
-            <input type="text" name='zip' placeholder="Zip or   postalcode"><br>
+            <input type="text" name="zip" placeholder="Zip or   postalcode"><br>
 
             <div class="area-image">
                 <textarea id="introduction" name="introduction"         placeholder="Introduction" 	maxlength="300" required></textarea><br>
             <input type="file" class="imginput" name="picture">
-            <img src="" alt="" id="profile"></img>
+            <img id="profile"></img>
         </div>
         <div class="button-class">
-            <button type='submit' id='button'>Save</button>
-            <button type='reset'>Delete</button>	
+            <button type="submit" id="button">Save</button>
+            <button type="reset">Delete</button>	
         </div>
         </form>
     </section>
@@ -38,15 +38,15 @@ formElement.addEventListener('submit', e => {
 
     const formData = new FormData();
 
-    formData.append('firstname', e.target.querySelector(`input[name='firstname']`).value);
+    formData.append("firstname", e.target.querySelector(`input[name="firstname"]`).value);
 
-    formData.append('surname', e.target.querySelector(`input[name='surname']`).value);
+    formData.append("surname", e.target.querySelector(`input[name="surname"]`).value);
 
-    formData.append('address', e.target.querySelector(`input[name='address']`).value);
+    formData.append("address", e.target.querySelector(`input[name="address"]`).value);
 
-    formData.append('zip', e.target.querySelector(`input[name='zip']`).value);
+    formData.append("zip", e.target.querySelector(`input[name="zip"]`).value);
 
-    formData.append('introduction', e.target.querySelector(`textarea[name='introduction']`).value);
+    formData.append("introduction", e.target.querySelector(`textarea[name="introduction"]`).value);
 
     /*formData.append('button-class', e.target.querySelector(`.button-class`).value)*/
 
@@ -55,7 +55,7 @@ formElement.addEventListener('submit', e => {
     const fetchSettings = {
         
         method: 'POST',
-        body: FormData
+        body: formData
     }
 
 
