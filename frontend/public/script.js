@@ -11,10 +11,12 @@ const formComponent = `
 
             <input type="text" name="zip" placeholder="Zip or   postalcode"><br>
 
-            <div class="area-image">
+            <div class="area">
                 <textarea id="introduction" name="introduction"         placeholder="Introduction" 	maxlength="300" required></textarea><br>
-            <input type="file" class="imginput" name="picture">
+            </div>
+            <div class="imginput">
             <img id="profile"></img>
+            <input type="file"  name="picture">
         </div>
         <div class="button-class">
             <button type="submit" id="button">Save</button>
@@ -65,10 +67,10 @@ formElement.addEventListener('submit', e => {
 
             if ( data.status === 200 ) {
                 const res = await data.json()
-
-            /*e.target.outerHTML = `<img src="upload/${res.pictureName}">`
+                console.dir(res)
+                alert('Your input has been submitted!')
             
-            console.dir(data)*/
+            //console.dir(data)
             }
         })
         .catch( error => {
@@ -81,6 +83,22 @@ formElement.addEventListener('submit', e => {
 
 });
 
+const imageInput = document.querySelector(`input[name="picture"]`);
+    imageInput.addEventListener('change', e => {
+
+        imageInput.classList.add("fileSelected");
+        
+        let selectedImg = e.target.files[0];
+
+        let fileReader = new FileReader();
+
+        fileReader.addEventListener('load', (e) => { 
+
+            document.getElementById('profile').src = e.target.result 
+        });
+
+        fileReader.readAsDataURL(selectedImg);
+    });
 
 
 }window.addEventListener('load', loadEvent)
